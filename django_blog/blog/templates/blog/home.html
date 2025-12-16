@@ -1,0 +1,59 @@
+{%extends "blog/base.html"%}
+{%block post-card%}
+    
+    {%for item in post%}
+        <div class="card mb-4">
+            <div class="card-footer text-muted">
+            <small>Posted on {{item.published}} by <a href="#" class="text-primary">{{item.author}}</a></small>
+            </div>
+            <img src="post-image.jpg" class="card-img-top" alt="Blog image">
+            <div class="card-body mb-3">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text text-truncate">{{item.content}}</p>
+
+                <div class="collapse" id="collapseExample.{{item.id}}">
+                    <div class="">
+                        {{item.content}}
+                    </div>
+                </div>
+
+                <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample.{{item.id}}" aria-expanded="false" aria-controls="collapseExample">Read More</button>
+            </div>
+        </div>
+    {%endfor%}
+                    
+                
+{%endblock post-card%}
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        {%if page_title%}
+            <title>{{page_title}}</title>
+        {%else%}
+            <title>django_blog</title>
+        {%endif%}
+</head> 
+<body>
+    <h1>Home</h1>
+    <div class="post">
+        {%for item in post%}
+            <span>{{item.author}}</span>  <span>{{item.published}}</span>
+            <h1>{{item.title}}</h1>
+            <p>{{item.content}}</p>
+
+        {% endfor %}
+    </div>
+
+    
+</body>
+</html> {% endcomment %}
