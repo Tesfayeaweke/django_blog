@@ -4,7 +4,7 @@
     {%for item in post%}
         <div class="card mb-4">
             <div class="card-footer text-muted">
-            <small>Posted on {{item.published}} by <a href="#" class="text-primary">{{item.author}}</a></small>
+            <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="#" class="text-primary">{{item.author}}</a></small>
             </div>
             <img src="post-image.jpg" class="card-img-top" alt="Blog image">
             <div class="card-body mb-3">
