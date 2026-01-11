@@ -1,0 +1,45 @@
+
+{% extends "blog/base.html" %}
+{%load crispy_forms_tags %}
+{% load static %}
+{%block head%}
+    <link rel="stylesheet" href="{% static 'users/register.css'%}">
+{%endblock%}
+
+
+{% block title%}
+    {% comment %} <h1>Join today!</h1> {% endcomment %}
+{% endblock title%}
+
+{%block post-card%}
+        <form method = "POST" action = "{%url 'register'%}">
+            {% csrf_token %}
+            <fieldset class = "form-group">  
+                <legend class = "border-bottom mb-4">Join Today!</legend>
+                {{form|crispy}}
+            </fieldset>
+            
+            {% comment %} {% csrf_token %}
+            <div>
+                <label for="username">User name: </label>
+                <input type="text" style = "margin-bottom: 20px" name = "username">
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" style = "margin-bottom: 20px" name = "password">
+            </div>
+            <button type = 'submit' class = btn btn-outline>Register</button> {% endcomment %}
+            <div class="form-group mt-3 mb-3">
+                <button type = 'submit' class = "btn  btn-outline" >Sign Up</button>
+            </div>
+            <div class="border-top pt-3">
+                <small class = "text-muted"> already have account <a href = "{%url 'login'%}">Sign In</a> </small>
+            </div>
+            
+        </form>
+        
+    
+
+    
+               
+{%endblock post-card%}

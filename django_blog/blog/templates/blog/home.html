@@ -1,7 +1,20 @@
 {%extends "blog/base.html"%}
 {%block post-card%}
+
+    {%if messages%}    
+            
+        {%for message in messages%}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        {%endfor%}
+            
+    {%endif%}
+    
     
     {%for item in post%}
+        
+        
         <div class="card mb-4">
             <div class="card-footer text-muted">
             <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="#" class="text-primary">{{item.author}}</a></small>

@@ -1,0 +1,88 @@
+{% extends "blog/base.html" %}
+{%load crispy_forms_tags %}
+{% load static %}
+{%block head%}
+    <link rel="stylesheet" href="{% static 'users/register.css'%}">
+{%endblock%}
+
+
+{% block title%}
+    {% comment %} <h1>Join today!</h1> {% endcomment %}
+{% endblock title%}
+
+{%block post-card%}
+        {%if request.user.is_authenticated%}
+            <form method = "POST">
+            {% csrf_token %}
+            <div class="alert alert-danger" role="alert">
+                Do you want to log out ?
+            </div>           
+            <div class="form-group mt-3 mb-3">
+                <button type = 'submit' class = "btn  btn-outline" >Logout</button>
+            </div>
+            <div class="border-top pt-3">
+                <small class = "text-muted"> Didn't have an account <a href = "{%url 'blog-home'%}">Sign Up</a> </small>
+            </div>
+            
+            </form>
+
+        {%endif%}
+        
+        
+    
+
+    
+               
+{%endblock post-card%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {%extends "blog/base.html"%}
+{%block head%}
+{%endblock%}
+
+{% block title%}
+
+{% endblock title%}
+
+{%block post-card%}
+    {%if request.user.is_authenticated%}
+        <form  method = "POST">
+            {% csrf_token %}
+            <p>Are you sure you want to logout?</p>
+
+            
+            <button type= 'submit'>YES</button>
+
+        </form>
+    {%else%}
+    <p>Please Login first <a href= "{%url 'login'%}">Login</a> </p>       
+    {%endif%}
+
+                
+{%endblock post-card%} {% endcomment %}
