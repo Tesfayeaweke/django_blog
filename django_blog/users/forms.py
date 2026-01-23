@@ -3,6 +3,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field
 from django.contrib.auth.models import User
+from .models import Profile
 
 class MyCustomForm(UserCreationForm):
     # def __init__(self ,*args, **kwargs):
@@ -32,3 +33,12 @@ class MyCustomForm(UserCreationForm):
         #             'password1': forms.PasswordInput(attrs={'class':'form-control','placeholder':'password'}),
         #             'password2': forms.PasswordInput(attrs={'class':'form-control','placeholder':'confirm password'}),
         #             }
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username","email","first_name","last_name"]
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["image"]

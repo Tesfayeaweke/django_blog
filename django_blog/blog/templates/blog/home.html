@@ -17,9 +17,12 @@
         
         <div class="card mb-4">
             <div class="card-footer text-muted">
-            <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="#" class="text-primary">{{item.author}}</a></small>
-            </div>
-            <img src="post-image.jpg" class="card-img-top" alt="Blog image">
+                <img src="{{user.profile.image.url}}" class="card-img-top article-img rounded-circle" style = "height:50px; width:50px "alt="Blog image">
+                <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="#" class="text-primary">{{item.author}}</a></small>
+            
+        </div>
+
+            
             <div class="card-body mb-3">
                 <h5 class="card-title">{{item.title}}</h5>
                 <p class="card-text text-truncate">{{item.content}}</p>
