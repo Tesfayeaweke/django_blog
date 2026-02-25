@@ -13,3 +13,7 @@
     /* object-fit: cover;  /* CRITICAL: Prevents the image from looking stretched */
     /* border: 3px solid #ececec;  */
 }
+
+#delete {
+    background-color: yellow !important;
+}

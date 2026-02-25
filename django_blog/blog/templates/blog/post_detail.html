@@ -1,0 +1,83 @@
+{%extends "blog/base.html"%}
+{% load static %}
+{%block post-card%}
+
+    {% comment %} {%if messages%}    
+            
+        {%for message in messages%}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        {%endfor%}
+            
+    {%endif%} {% endcomment %}    
+        
+        <div class="card mb-4">
+            <div class="card-footer text-muted">
+                <img src="{{user.profile.image.url}}" class="card-img-top article-img rounded-circle" style = "height:50px; width:50px "alt="Blog image">
+                <small>Posted on {{object.date_posted | date:"F d, Y"}} by <a href="#" class="text-primary">{{object.author}}</a></small>
+            
+        </div>
+
+            
+            <div class="card-body mb-3">
+                <h5 class="card-title">{{object.title}}</h5>
+                <p class="card-text text-truncate">{{object.content}}</p>
+
+                <div class="collapse" id="collapseExample.{{object.id}}">
+                    <div class="">
+                        {{object.content}}
+                    </div>
+                </div>
+
+                <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample.{{object.id}}" aria-expanded="false" aria-controls="collapseExample">Read More</button>
+                <br>
+                {%if object.author == request.user%}
+                <div>
+                    <a type="button" class="btn  mt-3" href = "{%url "post-update" object.id%}">Update</a>
+                    <a type="button" class="btn  mt-3" style = "background-color: red;" href = "{%url "post-delete" object.id%}">Delete</a>
+
+                </div>
+                    
+                {%endif%}
+                
+            </div>
+        </div>
+    
+                    
+                
+
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        {%if page_title%}
+            <title>{{page_title}}</title>
+        {%else%}
+            <title>django_blog</title>
+        {%endif%}
+</head> 
+<body>
+    <h1>Home</h1>
+    <div class="post">
+        {%for item in post%}
+            <span>{{item.author}}</span>  <span>{{item.published}}</span>
+            <h1>{{item.title}}</h1>
+            <p>{{item.content}}</p>
+
+        {% endfor %}
+    </div>
+
+    
+</body>
+</html> {% endcomment %}
+{%endblock post-card%}

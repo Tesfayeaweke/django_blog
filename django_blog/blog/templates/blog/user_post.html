@@ -1,5 +1,7 @@
 {%extends "blog/base.html"%}
 {%block post-card%}
+    {% comment %} <h1 class = mb-3>Posts by {{view.kwargs.username}}</h1> {% endcomment %}
+    <legend class = " mb-4 display-5">Posts by {{view.kwargs.username}} ({{page_obj.paginator.count}})</legend>
 
     {%if messages%}    
             
@@ -18,7 +20,7 @@
         <div class="card mb-4">
             <div class="card-footer text-muted">
                 <img src="{{item.author.profile.image.url}}" class="card-img-top article-img rounded-circle" style = "height:50px; width:50px "alt="Blog image">
-                <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="{%url 'user-post' item.author%}" class="text-primary">{{item.author}}</a></small>
+                <small>Posted on {{item.date_posted | date:"F d, Y"}} by <a href="{%url "user-post" item.author%}" class="text-primary">{{item.author}}</a></small>
             
         </div>
 
