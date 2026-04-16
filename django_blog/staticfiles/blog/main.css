@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #2C5016;
+}
+
+.btn {
+    background-color: #16504D;
+    color: whitesmoke;
+}
+
+.account-image {
+    height: 150px;
+    width: 150px;
+    /* object-fit: cover;  /* CRITICAL: Prevents the image from looking stretched */
+    /* border: 3px solid #ececec;  */
+}
+
+#delete {
+    background-color: yellow !important;
+}

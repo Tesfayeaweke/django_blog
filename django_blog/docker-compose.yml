@@ -6,39 +6,61 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
     image: django-blog-image
     container_name: django-blog-docker-container
     ports:
       - "8000:8000"
 
     environment:
-      - USE_POSTGRES=True
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_HOST=db
-      - DB_PASSWORD=${DB_PASSWORD}
+      # - USE_POSTGRES=True
+      # - DB_NAME=${DB_NAME}
+      # - DB_USER=${DB_USER}
+      # - DB_HOST=db
+      # - DB_PASSWORD=${DB_PASSWORD}
+      - DATABASE_URL=${DATABASE_URL}
       - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     
     volumes:
       - .:/app
     depends_on:
       - db
 
-
   db:
     image: postgres:17-alpine
     container_name: postgres-db
     restart: always
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-    ports:
-      - "5432:5432"
+        - POSTGRES_USER=${DB_USER}
+        - POSTGRES_PASSWORD=${DB_PASSWORD}
+        - POSTGRES_DB=${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data 
-volumes:
-      postgres_data:
+    ports:
+      - "5432:5432"
+  volumes:
+    postgres_data:
+
+
+
+
+#   db:
+#     image: postgres:17-alpine
+#     container_name: postgres-db
+#     restart: always
+#     environment:
+#       - POSTGRES_USER=${DB_USER}
+#       - POSTGRES_PASSWORD=${DB_PASSWORD}
+#       - POSTGRES_DB=${DB_NAME}
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data 
+# volumes:
+#       postgres_data:
   
 
 
